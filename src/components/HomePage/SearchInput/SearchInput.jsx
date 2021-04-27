@@ -5,8 +5,13 @@ import classes from './SearchInput.module.scss'
 const SearchInput = props => {
 
 
+
   const handlerClick = ({target}) =>{
     props.setSpiner(true)
+    console.log(target);
+    // props.setStocksFromServer(props.inputValue)
+    console.log(props.inputValue);
+
   }
 
   return (

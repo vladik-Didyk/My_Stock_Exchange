@@ -5,20 +5,20 @@ import shortid from 'shortid'
 
 const ResultsList = props => (
 
+
   <ul className={classes.ResultsList}>
     {props.stocksFromServer.map(stock => {
-        return (
-          
-       
+      return (
 
-          <ResultsItem
-            key={shortid.generate()}
-            stockSymbol={stock.symbol}
-            stockName={stock.name}
-            />
-        )
-      })}
+        <ResultsItem
+          key={shortid.generate()}
+          stockSymbol={stock.symbol}
+          stockName={stock.name}
+        />
+      )
+    })}
   </ul>
+
 )
 
 export default ResultsList

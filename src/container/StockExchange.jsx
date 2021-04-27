@@ -33,6 +33,7 @@ const StockExchange = props => {
     <div className={classes.mainContainer}>
       <h1>Stock Exchange</h1>
       <HomePage 
+      setStocksFromServer={setStocksFromServer}
       stocksFromServer={stocksFromServer}
       inputValue={inputValue}
       setInputValue={setInputValue}
