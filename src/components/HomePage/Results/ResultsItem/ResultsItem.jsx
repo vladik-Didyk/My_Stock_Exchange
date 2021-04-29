@@ -1,18 +1,31 @@
+import React from 'react'
 import classes from './ResultsItem.module.scss'
+import {NavLink} from 'react-router-dom'
 
 
 
 const ResultsItem = props => {
 
+
+
+
+
+ 
   
   return (
-    
-      <li className={classes.ResultsItem}
-          onClick={()=>props.stockOnClick(props.key)}
+    <nav  className={classes.ResultsItem}
           >
-        <h4> Symbol: &nbsp;({props.stockSymbol}) &nbsp; Company name: &nbsp;{props.stockName}</h4>
+      <NavLink to={{
+      pathname:`/StockPage/${props.stockSymbol}`,
+    
+
+    }}   >
+      <li>   
+          <h4 >{props.stockName}&nbsp;({props.stockSymbol}) </h4> 
       </li>
-   
+      </NavLink>
+    </nav>
+    
   )
 }
 

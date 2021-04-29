@@ -1,6 +1,15 @@
 .ResultsItem{
   display: flex;
   flex-direction: column;
-  border-bottom: black solid 1px;
+  border-bottom: aliceblue solid 1px;
+  margin-top: 5px;
+}
+
+h4{
+  color: aliceblue;
+}
+
+li{
+  list-style-type: none
 }
 

@@ -7,10 +7,9 @@ const SearchInput = props => {
 
 
   const handlerClick = ({target}) =>{
-    props.setSpiner(true)
-    console.log(target);
+    // props.setSpiner(true)
+    
     // props.setStocksFromServer(props.inputValue)
-    console.log(props.inputValue);
 
   }
 
@@ -23,7 +22,7 @@ const SearchInput = props => {
           value={props.inputValue}
           onChange={props.handlerInput}
           className="form-control"
-          placeholder="Get value today"
+          placeholder="Price is what you pay. Value is what you get."
         />
         <button
           type="button"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
 import HomePage from '../components/HomePage/HomePage'
 import classes from './StockExchange.module.scss'
@@ -11,24 +11,22 @@ const StockExchange = props => {
  const [errorCatch, setErrorCatch] = useState(false)
  const [spiner, setSpiner] = useState(false)
 
- const handlerInput = ({ target }) => {
 
+
+ const handlerInput = ({ target }) => {
   setInputValue(target.value)
-  // console.log(target.value)
+  setSpiner(true)
+  axios.get(`https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=${inputValue.toUpperCase()}&limit=10&exchange=NASDAQ`)
+  .then(response=>response.data)
+  .then(data=>setStocksFromServer(data))
+  .catch(()=>setErrorCatch(true))
+  .finally(()=>{
+    setSpiner(false)
+  })
+  
 }
 
-  useEffect(()=>{
-    axios.get(`https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=${inputValue.toUpperCase()}&limit=10&exchange=NASDAQ`)
-    .then(response=>response.data)
-    .then(data=>setStocksFromServer(data))
-    .catch(()=>setErrorCatch(true))
-    .finally(()=>{
-      setSpiner(true)
-    })
-
-  },[inputValue])
-
-
+ 
   return (
     <div className={classes.mainContainer}>
       <h1>Stock Exchange</h1>

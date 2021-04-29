@@ -3,22 +3,28 @@ import classes from './ResultsList.module.scss'
 import shortid from 'shortid'
 
 
-const ResultsList = props => (
+const ResultsList = props => {
+  
+  
+  return(
+  props.inputValue&&(
+    props.stocksFromServer.length
 
-
-  <ul className={classes.ResultsList}>
+  ?(<ul className={classes.ResultsList}>
     {props.stocksFromServer.map(stock => {
       return (
-
         <ResultsItem
           key={shortid.generate()}
           stockSymbol={stock.symbol}
           stockName={stock.name}
+          inputValue={props.inputValue}
         />
       )
     })}
-  </ul>
+  </ul>)
+  :<div className={classes.noCompanyMessage}><h5>I am sorry but there is no such company...</h5></div>
+  )
 
-)
+)}
 
 export default ResultsList
