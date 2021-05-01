@@ -7,6 +7,7 @@ import Loader from '../Loader/Loader'
 
 const HomePage = props => {
 
+
   return (
 
     <div className='container'>

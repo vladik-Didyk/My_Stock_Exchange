@@ -5,9 +5,11 @@ import StockPageContainer from './container/StockPageContainer/StockPageContaine
 export function App() {
   return (
     <BrowserRouter>
-        {/* <StockExchange/> */}
         <Switch>
-          <Route  path='/StockPage/:id?' component={StockPageContainer}/> 
+          <Route  path='/StockPage/:id?/:stockName?' 
+                  render={props=> <StockPageContainer {...props}/> }
+                 
+          /> 
           <Route path='/' exact  component={StockExchange}/>
         </Switch>
      </BrowserRouter>

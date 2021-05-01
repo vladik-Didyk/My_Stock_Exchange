@@ -5,7 +5,7 @@ import shortid from 'shortid'
 
 const ResultsList = props => {
   
-  
+  // console.log(props.stocksFromServer);
   return(
   props.inputValue&&(
     props.stocksFromServer.length

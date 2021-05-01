@@ -4,7 +4,11 @@ import HomePage from '../components/HomePage/HomePage'
 import classes from './StockExchange.module.scss'
 
 
+
+
 const StockExchange = props => {
+  
+  
 
  const [stocksFromServer, setStocksFromServer] = useState([])
  const [inputValue, setInputValue] = useState('')
@@ -12,33 +16,30 @@ const StockExchange = props => {
  const [spiner, setSpiner] = useState(false)
 
 
-
- const handlerInput = ({ target }) => {
-  setInputValue(target.value)
+  const handlerInput =  ({ target }) => {
   setSpiner(true)
-  axios.get(`https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=${inputValue.toUpperCase()}&limit=10&exchange=NASDAQ`)
+  setInputValue(target.value)
+   axios.get(`https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=${target.value}&limit=10&exchange=NASDAQ`)
   .then(response=>response.data)
   .then(data=>setStocksFromServer(data))
   .catch(()=>setErrorCatch(true))
   .finally(()=>{
     setSpiner(false)
   })
-  
 }
 
- 
   return (
     <div className={classes.mainContainer}>
       <h1>Stock Exchange</h1>
       <HomePage 
       setStocksFromServer={setStocksFromServer}
       stocksFromServer={stocksFromServer}
-      inputValue={inputValue}
       setInputValue={setInputValue}
+      inputValue={inputValue}
       handlerInput={handlerInput}
       errorCatch={errorCatch}
-      spiner={spiner}
       setSpiner={setSpiner}
+      spiner={spiner}
       />
     </div>
   )
