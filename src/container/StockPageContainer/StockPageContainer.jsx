@@ -19,8 +19,9 @@ const StockPageContainer = props =>{
     .finally(()=>{
 
     })
-  })
+  }, [])
 
+  
   
   return(
     

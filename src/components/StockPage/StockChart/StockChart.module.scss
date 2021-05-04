@@ -1,0 +1,17 @@
+.StockChart{
+  background: rgb(255, 255, 255);
+  animation: StockChart 3s ease-out forwards;
+}
+
+@keyframes StockChart {
+  0% {
+    opacity: 0;
+    transform: rotate(10deg)
+  } 
+  100%{
+    opacity: 1;
+    transform: rotate(360deg)
+  }
+}
+
+

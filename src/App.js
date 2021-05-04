@@ -6,14 +6,14 @@ export function App() {
   return (
     <BrowserRouter>
         <Switch>
+          
           <Route  path='/StockPage/:id?/:stockName?' 
-                  render={props=> <StockPageContainer {...props}/> }
-                 
+                  component={StockPageContainer}          
           /> 
-          <Route path='/' exact  component={StockExchange}/>
+          <Route path='/:symbol?'  component={StockExchange}/>
         </Switch>
      </BrowserRouter>
-  );
+  )
 }
 
 export default App;

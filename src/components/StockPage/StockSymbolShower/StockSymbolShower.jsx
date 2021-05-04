@@ -5,7 +5,7 @@ const StockSymbolShower = props => {
 
 
   return(<div className={classes.stockSymbolShower}>
-      <img   
+      <img   className={classes.imgLogo}
             src={props.image} alt="Logo"
       />
       <p>{props.stockName}</p>

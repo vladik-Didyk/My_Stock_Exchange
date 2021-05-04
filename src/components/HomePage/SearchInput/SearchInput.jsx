@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import classes from './SearchInput.module.scss'
 
 const SearchInput = props => {
+
+
 
 
   return (
