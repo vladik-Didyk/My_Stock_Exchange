@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import HomePage from '../components/HomePage/HomePage'
 import Marquee from '../components/HomePage/Marquee/Marquee'
 import classes from './StockExchange.module.scss'
+import shortid from 'shortid'
 import axios from 'axios'
 
 
@@ -13,6 +14,7 @@ const StockExchange = props => {
 
  const [stocksFromServer, setStocksFromServer] = useState([])
  const [inputValue, setInputValue] = useState('')
+ const [dataFromAxios, setDataFromAxios] = useState('')
  const [errorCatch, setErrorCatch] = useState(false)
  const [spiner, setSpiner] = useState(false)
 
@@ -25,16 +27,20 @@ const StockExchange = props => {
  
  }, [])
 
-  async function  handlerInput  ({ target })  {
+  function  handlerInput  ({ target })  {
   setSpiner(true)
   setInputValue(target.value)
   
-  await axios.get(`https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=${target.value}&limit=10&exchange=NASDAQ`)
+
+
+   axios.get(`https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/search?query=${target.value}&limit=10&exchange=NASDAQ`)
   .then(response=> response.data)
     .then(data=>{
-    props.history.push('/' + target.value)
+  props.history.push('/' + target.value)
     setStocksFromServer(data)
+    return data
   })
+  .then(getCutentStock)
 
   .catch(err=> {if (err.response) {
     // setErrorCatch(true)
@@ -55,7 +61,15 @@ const StockExchange = props => {
 }
 
 
+  const getCutentStock = data =>{
 
+    axios.all(data.map(stock=> axios.get(`https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/${stock.symbol}`)))
+    .then(e=>{
+      console.log(e);
+    })
+  }
+
+  
   return (
     <div className={classes.StockExchange}>
       <Marquee stocksFromServer={stocksFromServer}/>

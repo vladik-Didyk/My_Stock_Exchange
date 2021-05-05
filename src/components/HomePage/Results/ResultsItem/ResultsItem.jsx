@@ -11,8 +11,8 @@ const ResultsItem = props => {
   const [dataFromAxios, setDataFromAxios] = useState('')
 
   // console.log(props);
-  console.log(typeof props.inputValue);
-  console.log(typeof props.stockName);
+  // console.log(typeof props.inputValue);
+  // console.log(typeof props.stockName);
   
 
   useEffect(() => {

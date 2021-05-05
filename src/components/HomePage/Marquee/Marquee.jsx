@@ -4,9 +4,9 @@ import classes from './Marquee.mdoule.scss'
 
 const Marquee = props => {
 
-  console.log(props.stocksFromServer);
+  // console.log(props.stocksFromServer);
 
-  console.log(ResultsItem);
+  // console.log(ResultsItem);
 
  
   return(

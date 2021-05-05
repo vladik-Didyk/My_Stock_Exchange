@@ -14,7 +14,7 @@ const ResultsList = props => {
     {props.stocksFromServer.map(stock => {
       return (
         <ResultsItem
-          key={shortid.generate()}
+          key={stock.symbol}
           stockSymbol={stock.symbol}
           stockName={stock.name}
           inputValue={props.inputValue}
